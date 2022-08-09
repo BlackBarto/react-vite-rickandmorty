@@ -1,6 +1,5 @@
 export default function Character({character}) {
-    const {name, status, species, image, episode: [firstEpisode]} = character
-    const statusClass = status === "Dead" ? "red-300" : status === "Alive" ? "green-600" : "slate-300" 
+    const {name, status, species, image, episode: [firstEpisode]} = character 
     const firstSeen = firstEpisode.split("/").pop()
 
     return (
@@ -9,8 +8,12 @@ export default function Character({character}) {
             <img src={image} alt={`Image of ${name}`} className="w-full h-auto" />
             <p className="flex flex-col items-center py-3">
                 <span className="font-bold">
-                    <span className={`px-1.5 border border-transparent border-r-white text-${statusClass}`}>{status}</span>
-                    <span className="px-1.5 text-white">{species}</span>
+                    {status === "Dead" 
+                    ? <span className="font-bold text-red-500 px-1.5">{status}</span> 
+                    : status === "Alive" 
+                    ? <span className="font-bold text-green-500 px-1.5">{status}</span> 
+                    : <span className="font-bold text-slate-500 px-1.5">{status}</span>}
+                    <span className="px-1.5 text-white border-2 border-transparent border-l-white">{species}</span>
                 </span>
                 <span>First seen in {firstSeen} episode</span>
             </p>

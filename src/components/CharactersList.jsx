@@ -2,14 +2,14 @@ import useCharactes from "../hooks/useCharactes";
 import Character from "./Character";
 
 export default function CharactersList({search}) {
-    const {characters, fetchCharacters, deleteCharacters} = useCharactes(search)
+    const [characters, fetchCharacters] = useCharactes(search)
 
     if (!characters.length) {
         fetchCharacters()
         return (
-            <div className="h-24 z-20 w-full flex items-center justify-center">
-                <div className="absolute h-24 w-24 rounded-full border-4 border-blue-700 border-t-transparent animate-spin"></div>
-                <p>Loading</p>
+            <div className="h-28 z-20 w-full flex items-center justify-center">
+                <div className="absolute h-28 w-28 rounded-full border-4 border-blue-700 border-t-transparent animate-spin"></div>
+                <p className="text-white">Loading</p>
             </div>
         )
     }

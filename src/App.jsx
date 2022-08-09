@@ -7,7 +7,6 @@ function App() {
   const [search, setSearch] = useState("")
   
   const handleSearch = (searchValue) => {
-    console.log(searchValue, search)
     if(!searchValue || !(searchValue !== search) ) return
     
     setSearch(searchValue)
